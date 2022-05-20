@@ -1,19 +1,17 @@
 comment: |
   '{
-          // English support
           "en": {
               "displayName": "GetTableData",
               "comment": "Get data from an Airtable database"
           },
-          // French support
           "fr": {
               "displayName": "GetTableData",
               "comment": "Récupére des données d''une base Airtable"
           },
-          // Supported types 
   	 "types":["select", "grid"]
   }
   '
+↓Input_variables [steps.InputVariablesStep-1653069353060]: 
 ↓DefineMappings [steps.SimpleStep-1653055162667]: 
   expression: |
     'mappings = {
@@ -30,10 +28,50 @@ comment: |
 ↓Call_Transaction [steps.TransactionStep-1653040613205]: 
   sourceTransaction: lib_Airtable.Airtable.ListRecords
   ↓database [variables.StepVariable-1653040613207]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1653069353060
+          - java.lang.String: 
+            - ↑value: ./forms_input_database/text()
   ↓table [variables.StepVariable-1653040613209]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1653069353060
+          - java.lang.String: 
+            - ↑value: ./forms_input_table/text()
   ↓api_key [variables.StepVariable-1653040613211]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1653069353060
+          - java.lang.String: 
+            - ↑value: ./forms_input_api_key/text()
   ↓maxRecords [variables.StepVariable-1653040613213]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1653069353060
+          - java.lang.String: 
+            - ↑value: ./forms_input_maxRecords/text()
   ↓view [variables.StepVariable-1653040613215]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1653069353060
+          - java.lang.String: 
+            - ↑value: ./forms_input_mappings/text()
 ↓Array [steps.JsonArrayStep-1653041005187]: 
   key: 
     - xmlizable: 
@@ -243,21 +281,57 @@ comment: |
                 - SmartType: 
                   - ↑mode: JS
                   - →→: jDisplayName
-↓database [variables.RequestableVariable-1653040678017]: 
-↓table [variables.RequestableVariable-1653040678019]: 
-↓api_key [variables.RequestableVariable-1653040678021]: 
-↓maxRecords [variables.RequestableVariable-1653040678023]: 
-↓view [variables.RequestableVariable-1653040678025]: 
-↓mappings [variables.RequestableVariable-1653054009777]: 
+↓forms_api_key [variables.RequestableVariable-1653040678021]: 
+  comment: |
+    '{
+        "en": {
+            "displayName": "<p>API Key</p>",
+            "comment"    : "The Airtable API Key can be found on the <a target=''_blank'' href=''https://airtable.com/api''>https://airtable.com/api</a> page. From there, click on the ''Show API Key'' on the upperleft of the page. Then scroll down to some text on the right side displaying : <br ><br >''Bearer XXXXXX''<br><br>This is the key. Copy the string next to Bearer and paste it in this field."
+        }
+    }'
+↓forms_database [variables.RequestableVariable-1653040678017]: 
+  comment: |
+    '{
+        "en": {
+            "displayName": "<p>The database ID</p>",
+            "comment"    : "The Airtable Database id can be found on the <a target=''_blank'' href=''https://airtable.com/api''>https://airtable.com/api</a> page. From there, click on the database you want, a page will appear with some information like :<br />''The database ID is : XXXXX</br>Copy the ID and paste it in this field "
+        }
+    }'
+  value: 
+↓forms_table [variables.RequestableVariable-1653040678019]: 
+  comment: |
+    '{
+        "en": {
+            "displayName": "<p>Table</p>",
+            "comment"    : "The Airtable Database table name you would like to display. This is the same name as the Table name in the Airtable user interface."
+        }
+    }'
+↓forms_view [variables.RequestableVariable-1653040678025]: 
+  comment: |
+    '{
+        "en": {
+            "displayName": "<p>View</p>",
+            "comment"    : "The View name you want to use to get the data. This is the same View name you have in the Airtable user interface"
+        }
+    }'
+↓forms_maxRecords [variables.RequestableVariable-1653040678023]: 
+  comment: |
+    '{
+        "en": {
+            "displayName": "<p>Maximum records</p>",
+            "comment"    : "This is the maximum number of records you would like to to retreive from AirTable. Notice that if you give a very high number here, this can take some to time to display"
+        }
+    }'
+↓forms_mappings [variables.RequestableVariable-1653054009777]: 
 ↓TestDesignProjects [core.TestCase]: 
-  ↓database [variables.TestCaseVariable-1653040928797]: 
-    value: appqqkBuzuDx7wX3K
-  ↓table [variables.TestCaseVariable-1653040928800]: 
-    value: Design Projects
-  ↓api_key [variables.TestCaseVariable-1653040928803]: 
+  ↓forms_api_key [variables.TestCaseVariable-1653040928803]: 
     value: keyu6xolOr1ZRsPDK
-  ↓maxRecords [variables.TestCaseVariable-1653040928806]: 
+  ↓forms_database [variables.TestCaseVariable-1653040928797]: 
+    value: appqqkBuzuDx7wX3K
+  ↓forms_table [variables.TestCaseVariable-1653040928800]: 
+    value: Design Projects
+  ↓forms_maxRecords [variables.TestCaseVariable-1653040928806]: 
     value: 1
-  ↓view [variables.TestCaseVariable-1653040928809]: 
+  ↓forms_view [variables.TestCaseVariable-1653040928809]: 
     value: Main View
-  ↓mappings [variables.TestCaseVariable-1653054704587]: 
+  ↓forms_mappings [variables.TestCaseVariable-1653054704587]: 

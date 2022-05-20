@@ -2,6 +2,7 @@
 ↓lib_Airtable [core.Project]: 
   comment: The Airtable connector for Convertigo No Code Studio
   corsOrigin: =Origin
+  version: 1.0
   ↓Airtable [connectors.HttpConnector]: 🗏 connectors/Airtable.yaml
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
   ↓formssource_GetTableData [sequences.GenericSequence]: 🗏 sequences/formssource_GetTableData.yaml
