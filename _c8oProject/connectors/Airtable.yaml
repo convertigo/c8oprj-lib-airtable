@@ -1,0 +1,76 @@
+baseDir: /v0/
+https: true
+port: 443
+server: api.airtable.com
+trustAllServerCertificates: false
+↓Default_transaction [transactions.HttpTransaction]: 
+  ↑default: true
+↓GetFields [transactions.JsonHttpTransaction]: 
+  subDir: '{database}/{table}'
+  handlers: 
+    →: |
+      '// Handles the transaction start event.
+      function onTransactionStarted() {
+          // TODO: add your code here
+      
+          // TODO: customize the returned value (if you omit returned value, the 
+          // algorithm will continue its process).
+          // Possible values are:
+          //    cancel - means the algorithm cancels the transaction core process.
+      
+          // return "cancel";
+          context.connector.sUrl = context.connector.sUrl.replace(''+'', ''%20'');
+      }
+      '
+  ↓TestClients [core.TestCase]: 
+    ↓database [variables.TestCaseVariable-1653036673265]: 
+      value: appqqkBuzuDx7wX3K
+    ↓table [variables.TestCaseVariable-1653036673268]: 
+      value: Clients
+    ↓api_key [variables.TestCaseVariable-1653036673271]: 
+      value: keyu6xolOr1ZRsPDK
+  ↓TestDesignProjects [core.TestCase]: 
+    ↓database [variables.TestCaseVariable-1653035722319]: 
+      value: appqqkBuzuDx7wX3K
+    ↓table [variables.TestCaseVariable-1653035722321]: 
+      value: Design Projects
+    ↓api_key [variables.TestCaseVariable-1653035722323]: 
+      value: keyu6xolOr1ZRsPDK
+  ↓database [variables.RequestableHttpVariable-1653035675448]: 
+  ↓table [variables.RequestableHttpVariable-1653035675450]: 
+  ↓api_key [variables.RequestableHttpVariable-1653035690832]: 
+↓ListRecords [transactions.JsonHttpTransaction]: 
+  subDir: '{database}/{table}'
+  handlers: 
+    →: |
+      '// Handles the transaction start event.
+      function onTransactionStarted() {
+          // TODO: add your code here
+      
+          // TODO: customize the returned value (if you omit returned value, the 
+          // algorithm will continue its process).
+          // Possible values are:
+          //    cancel - means the algorithm cancels the transaction core process.
+      
+          // return "cancel";
+          context.connector.sUrl = context.connector.sUrl.replace(''+'', ''%20'');
+      }
+      '
+  ↓TestDesignProjects [core.TestCase]: 
+    ↓database [variables.TestCaseVariable-1653036927084]: 
+      value: appqqkBuzuDx7wX3K
+    ↓table [variables.TestCaseVariable-1653036927087]: 
+      value: Design Projects
+    ↓api_key [variables.TestCaseVariable-1653036927090]: 
+      value: keyu6xolOr1ZRsPDK
+    ↓maxRecords [variables.TestCaseVariable-1653037036749]: 
+      value: 3
+    ↓view [variables.TestCaseVariable-1653037036751]: 
+      value: Main View
+  ↓database [variables.RequestableHttpVariable-1653036927093]: 
+  ↓table [variables.RequestableHttpVariable-1653036927096]: 
+  ↓api_key [variables.RequestableHttpVariable-1653036927099]: 
+  ↓maxRecords [variables.RequestableHttpVariable-1653036970481]: 
+    httpName: maxRecords
+  ↓view [variables.RequestableHttpVariable-1653036981332]: 
+    httpName: view

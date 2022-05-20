@@ -1,0 +1,180 @@
+comment: |
+  '{
+          // English support
+          "en": {
+              "displayName": "GetTableData",
+              "comment": "Get data from an Airtable database"
+          },
+          // French support
+          "fr": {
+              "displayName": "GetTableData",
+              "comment": "Récupére des données d''une base Airtable"
+          },
+          // Supported types 
+  	 "types":["select", "grid"]
+  }
+  '
+↓Call_Transaction [steps.TransactionStep-1653040613205]: 
+  sourceTransaction: lib_Airtable.Airtable.ListRecords
+  ↓database [variables.StepVariable-1653040613207]: 
+  ↓table [variables.StepVariable-1653040613209]: 
+  ↓api_key [variables.StepVariable-1653040613211]: 
+  ↓maxRecords [variables.StepVariable-1653040613213]: 
+  ↓view [variables.StepVariable-1653040613215]: 
+↓Array [steps.JsonArrayStep-1653041005187]: 
+  key: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: PLAIN
+        - →→: data
+  ↓Iterator [steps.IteratorStep-1653040653056]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1653040613205
+          - java.lang.String: 
+            - ↑value: ./document/object/records/object
+    ↓Object [steps.JsonObjectStep-1653043509170]: 
+      ↓Field [steps.JsonFieldStep-1653043534548]: 
+        key: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+            - SmartType: 
+              - ↑mode: PLAIN
+              - →→: __rowValue
+        value: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+            - SmartType: 
+              - ↑mode: SOURCE
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1653040653056
+                - java.lang.String: 
+                  - ↑value: ./id/text()
+      ↓Iterator1 [steps.IteratorStep-1653040703368]: 
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1653040653056
+              - java.lang.String: 
+                - ↑value: ./fields/*
+        ↓IfExistThenElse [steps.IfExistThenElseStep-1653042048405]: 
+          sourceDefinition: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1653040703368
+                - java.lang.String: 
+                  - ↑value: ./@originalKeyName
+          ↓jThen [steps.ThenStep-1653042048814]: 
+            ↓Object [steps.JsonObjectStep-1653042977831]: 
+              key: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                  - SmartType: 
+                    - ↑mode: SOURCE
+                    - com.twinsoft.convertigo.beans.common.XMLVector: 
+                      - java.lang.String: 
+                        - ↑value: 1653040703368
+                      - java.lang.String: 
+                        - ↑value: ./@originalKeyName
+              ↓Field [steps.JsonFieldStep-1653043020410]: 
+                key: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                    - SmartType: 
+                      - ↑mode: PLAIN
+                      - →→: type
+                value: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                    - SmartType: 
+                      - ↑mode: PLAIN
+                      - →→: html
+              ↓Field1 [steps.JsonFieldStep-1653043055125]: 
+                key: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                    - SmartType: 
+                      - ↑mode: PLAIN
+                      - →→: value
+                value: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                    - SmartType: 
+                      - ↑mode: SOURCE
+                      - com.twinsoft.convertigo.beans.common.XMLVector: 
+                        - java.lang.String: 
+                          - ↑value: 1653040703368
+                        - java.lang.String: 
+                          - ↑value: ./id/text()
+              ↓Field2 [steps.JsonFieldStep-1653043133991]: 
+                key: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                    - SmartType: 
+                      - ↑mode: PLAIN
+                      - →→: displayValue
+                value: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                    - SmartType: 
+                      - ↑mode: SOURCE
+                      - com.twinsoft.convertigo.beans.common.XMLVector: 
+                        - java.lang.String: 
+                          - ↑value: 1653040703368
+                        - java.lang.String: 
+                          - ↑value: ./text()
+              ↓Field3 [steps.JsonFieldStep-1653043295658]: 
+                key: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                    - SmartType: 
+                      - ↑mode: PLAIN
+                      - →→: displayName
+                value: 
+                  - xmlizable: 
+                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                    - SmartType: 
+                      - ↑mode: SOURCE
+                      - com.twinsoft.convertigo.beans.common.XMLVector: 
+                        - java.lang.String: 
+                          - ↑value: 1653040703368
+                        - java.lang.String: 
+                          - ↑value: ./@originalKeyName
+          ↓jElse [steps.ElseStep-1653042048816]: 
+            ↓Field [steps.JsonFieldStep-1653042065050]: 
+              isEnabled: false
+              value: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                  - SmartType: 
+                    - ↑mode: SOURCE
+                    - com.twinsoft.convertigo.beans.common.XMLVector: 
+                      - java.lang.String: 
+                        - ↑value: 1653040703368
+                      - java.lang.String: 
+                        - ↑value: name(.)
+↓database [variables.RequestableVariable-1653040678017]: 
+↓table [variables.RequestableVariable-1653040678019]: 
+↓api_key [variables.RequestableVariable-1653040678021]: 
+↓maxRecords [variables.RequestableVariable-1653040678023]: 
+↓view [variables.RequestableVariable-1653040678025]: 
+↓TestDesignProjects [core.TestCase]: 
+  ↓database [variables.TestCaseVariable-1653040928797]: 
+    value: appqqkBuzuDx7wX3K
+  ↓table [variables.TestCaseVariable-1653040928800]: 
+    value: Design Projects
+  ↓api_key [variables.TestCaseVariable-1653040928803]: 
+    value: keyu6xolOr1ZRsPDK
+  ↓maxRecords [variables.TestCaseVariable-1653040928806]: 
+    value: 10
+  ↓view [variables.TestCaseVariable-1653040928809]: 
+    value: Main View
