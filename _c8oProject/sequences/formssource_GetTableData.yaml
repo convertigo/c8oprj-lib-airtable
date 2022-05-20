@@ -14,6 +14,19 @@ comment: |
   	 "types":["select", "grid"]
   }
   '
+↓DefineMappings [steps.SimpleStep-1653055162667]: 
+  expression: |
+    'mappings = {
+    	"Project Lead": {
+    		"Project Lead ID": {
+    			path: ".id"
+    		},
+    		"Project Lead Name": {
+    			path: ".name"
+    		}
+    	}
+    }
+    '
 ↓Call_Transaction [steps.TransactionStep-1653040613205]: 
   sourceTransaction: lib_Airtable.Airtable.ListRecords
   ↓database [variables.StepVariable-1653040613207]: 
@@ -64,7 +77,38 @@ comment: |
                 - ↑value: 1653040653056
               - java.lang.String: 
                 - ↑value: ./fields/*
-        ↓IfExistThenElse [steps.IfExistThenElseStep-1653042048405]: 
+        ↓IfExistThenElse [steps.IfExistThenElseStep-1653053394312]: 
+          sourceDefinition: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: 1653040703368
+                - java.lang.String: 
+                  - ↑value: ./text()
+          ↓jThen [steps.ThenStep-1653053394737]: 
+            ↓jSimpleSource [steps.SimpleSourceStep-1653053446474]: 
+              sourceDefinition: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                  - com.twinsoft.convertigo.beans.common.XMLVector: 
+                    - java.lang.String: 
+                      - ↑value: 1653040703368
+                    - java.lang.String: 
+                      - ↑value: ./text()
+              variableName: jField
+          ↓jElse [steps.ElseStep-1653053394739]: 
+            ↓JsonSource [steps.JsonSourceStep-1653053416413]: 
+              sourceDefinition: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                  - com.twinsoft.convertigo.beans.common.XMLVector: 
+                    - java.lang.String: 
+                      - ↑value: 1653040703368
+                    - java.lang.String: 
+                      - ↑value: .
+              variableName: jField
+        ↓IfExistThenElse1 [steps.IfExistThenElseStep-1653052140996]: 
           sourceDefinition: 
             - xmlizable: 
               - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
@@ -73,100 +117,138 @@ comment: |
                   - ↑value: 1653040703368
                 - java.lang.String: 
                   - ↑value: ./@originalKeyName
-          ↓jThen [steps.ThenStep-1653042048814]: 
-            ↓Object [steps.JsonObjectStep-1653042977831]: 
-              key: 
+          ↓jThen [steps.ThenStep-1653052141453]: 
+            ↓jSimpleSource [steps.SimpleSourceStep-1653057012847]: 
+              sourceDefinition: 
                 - xmlizable: 
-                  - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                  - SmartType: 
-                    - ↑mode: SOURCE
-                    - com.twinsoft.convertigo.beans.common.XMLVector: 
-                      - java.lang.String: 
-                        - ↑value: 1653040703368
-                      - java.lang.String: 
-                        - ↑value: ./@originalKeyName
-              ↓Field [steps.JsonFieldStep-1653043020410]: 
-                key: 
-                  - xmlizable: 
-                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                    - SmartType: 
-                      - ↑mode: PLAIN
-                      - →→: type
-                value: 
-                  - xmlizable: 
-                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                    - SmartType: 
-                      - ↑mode: PLAIN
-                      - →→: html
-              ↓Field1 [steps.JsonFieldStep-1653043055125]: 
-                key: 
-                  - xmlizable: 
-                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                    - SmartType: 
-                      - ↑mode: PLAIN
-                      - →→: value
-                value: 
-                  - xmlizable: 
-                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                    - SmartType: 
-                      - ↑mode: SOURCE
-                      - com.twinsoft.convertigo.beans.common.XMLVector: 
-                        - java.lang.String: 
-                          - ↑value: 1653040703368
-                        - java.lang.String: 
-                          - ↑value: ./id/text()
-              ↓Field2 [steps.JsonFieldStep-1653043133991]: 
-                key: 
-                  - xmlizable: 
-                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                    - SmartType: 
-                      - ↑mode: PLAIN
-                      - →→: displayValue
-                value: 
-                  - xmlizable: 
-                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                    - SmartType: 
-                      - ↑mode: SOURCE
-                      - com.twinsoft.convertigo.beans.common.XMLVector: 
-                        - java.lang.String: 
-                          - ↑value: 1653040703368
-                        - java.lang.String: 
-                          - ↑value: ./text()
-              ↓Field3 [steps.JsonFieldStep-1653043295658]: 
-                key: 
-                  - xmlizable: 
-                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                    - SmartType: 
-                      - ↑mode: PLAIN
-                      - →→: displayName
-                value: 
-                  - xmlizable: 
-                    - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                    - SmartType: 
-                      - ↑mode: SOURCE
-                      - com.twinsoft.convertigo.beans.common.XMLVector: 
-                        - java.lang.String: 
-                          - ↑value: 1653040703368
-                        - java.lang.String: 
-                          - ↑value: ./@originalKeyName
-          ↓jElse [steps.ElseStep-1653042048816]: 
-            ↓Field [steps.JsonFieldStep-1653042065050]: 
-              isEnabled: false
-              value: 
+                  - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                  - com.twinsoft.convertigo.beans.common.XMLVector: 
+                    - java.lang.String: 
+                      - ↑value: 1653040703368
+                    - java.lang.String: 
+                      - ↑value: ./@originalKeyName
+              variableName: jDisplayName
+          ↓jElse [steps.ElseStep-1653052141455]: 
+            ↓jSimpleSource [steps.SimpleSourceStep-1653057172805]: 
+              sourceDefinition: 
                 - xmlizable: 
-                  - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                  - SmartType: 
-                    - ↑mode: SOURCE
-                    - com.twinsoft.convertigo.beans.common.XMLVector: 
-                      - java.lang.String: 
-                        - ↑value: 1653040703368
-                      - java.lang.String: 
-                        - ↑value: name(.)
+                  - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                  - com.twinsoft.convertigo.beans.common.XMLVector: 
+                    - java.lang.String: 
+                      - ↑value: 1653040703368
+                    - java.lang.String: 
+                      - ↑value: name(.)
+              variableName: jDisplayName
+        ↓BuildHTMLDisplay [steps.SimpleStep-1653053579169]: 
+          expression: |
+            'if (mappings[jDisplayName]) {
+            	data = "";
+            	Object.keys(mappings[jDisplayName]).forEach(key => {
+            		data += key + ": ";
+            		data += eval("jField" + mappings[jDisplayName][key].path)
+            		data += "<br />"
+            	})
+            } else {
+            	if (typeof  jField != "string") { 
+            		data = "";
+            		Object.keys(jField).forEach(key => {
+            			data += key + ": "
+            			data += jField[key]
+            			data += "<br />"
+            		})
+            	} else if (typeof  jField == "array") { 
+            		data = "";
+            		Object.keys(jField).forEach(key => {
+            			data += key + ": "
+            			data += jField[key]
+            			data += "<br />"
+            		})
+            	} else {
+            		data = jField;
+            	}
+            }
+            
+            jDisplay = 
+            
+            "<div>" +
+            	data +
+            "</div>"
+            
+            
+            '
+        ↓Object [steps.JsonObjectStep-1653052058885]: 
+          key: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+              - SmartType: 
+                - ↑mode: SOURCE
+                - com.twinsoft.convertigo.beans.common.XMLVector: 
+                  - java.lang.String: 
+                    - ↑value: 1653040703368
+                  - java.lang.String: 
+                    - ↑value: name(.)
+          ↓Field [steps.JsonFieldStep-1653052058888]: 
+            key: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: PLAIN
+                  - →→: type
+            value: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: PLAIN
+                  - →→: html
+          ↓Field1 [steps.JsonFieldStep-1653052058891]: 
+            key: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: PLAIN
+                  - →→: value
+            value: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: SOURCE
+                  - com.twinsoft.convertigo.beans.common.XMLVector: 
+                    - java.lang.String: 
+                      - ↑value: 1653040703368
+                    - java.lang.String: 
+                      - ↑value: ./id/text()
+          ↓Field2 [steps.JsonFieldStep-1653052058894]: 
+            key: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: PLAIN
+                  - →→: displayValue
+            value: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: JS
+                  - →→: jDisplay
+          ↓Field3 [steps.JsonFieldStep-1653057206777]: 
+            key: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: PLAIN
+                  - →→: displayName
+            value: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: JS
+                  - →→: jDisplayName
 ↓database [variables.RequestableVariable-1653040678017]: 
 ↓table [variables.RequestableVariable-1653040678019]: 
 ↓api_key [variables.RequestableVariable-1653040678021]: 
 ↓maxRecords [variables.RequestableVariable-1653040678023]: 
 ↓view [variables.RequestableVariable-1653040678025]: 
+↓mappings [variables.RequestableVariable-1653054009777]: 
 ↓TestDesignProjects [core.TestCase]: 
   ↓database [variables.TestCaseVariable-1653040928797]: 
     value: appqqkBuzuDx7wX3K
@@ -175,6 +257,7 @@ comment: |
   ↓api_key [variables.TestCaseVariable-1653040928803]: 
     value: keyu6xolOr1ZRsPDK
   ↓maxRecords [variables.TestCaseVariable-1653040928806]: 
-    value: 10
+    value: 1
   ↓view [variables.TestCaseVariable-1653040928809]: 
     value: Main View
+  ↓mappings [variables.TestCaseVariable-1653054704587]: 
