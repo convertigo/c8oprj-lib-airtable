@@ -35,7 +35,7 @@ comment: |
           - java.lang.String: 
             - ↑value: 1653069353060
           - java.lang.String: 
-            - ↑value: ./forms_input_database/text()
+            - ↑value: ./forms_database/text()
   ↓table [variables.StepVariable-1653040613209]: 
     sourceDefinition: 
       - xmlizable: 
@@ -44,7 +44,7 @@ comment: |
           - java.lang.String: 
             - ↑value: 1653069353060
           - java.lang.String: 
-            - ↑value: ./forms_input_table/text()
+            - ↑value: ./forms_table/text()
   ↓api_key [variables.StepVariable-1653040613211]: 
     sourceDefinition: 
       - xmlizable: 
@@ -53,7 +53,7 @@ comment: |
           - java.lang.String: 
             - ↑value: 1653069353060
           - java.lang.String: 
-            - ↑value: ./forms_input_api_key/text()
+            - ↑value: ./forms_api_key/text()
   ↓maxRecords [variables.StepVariable-1653040613213]: 
     sourceDefinition: 
       - xmlizable: 
@@ -62,7 +62,7 @@ comment: |
           - java.lang.String: 
             - ↑value: 1653069353060
           - java.lang.String: 
-            - ↑value: ./forms_input_maxRecords/text()
+            - ↑value: ./forms_maxRecords/text()
   ↓view [variables.StepVariable-1653040613215]: 
     sourceDefinition: 
       - xmlizable: 
@@ -71,7 +71,7 @@ comment: |
           - java.lang.String: 
             - ↑value: 1653069353060
           - java.lang.String: 
-            - ↑value: ./forms_input_mappings/text()
+            - ↑value: ./forms_view/text()
 ↓Array [steps.JsonArrayStep-1653041005187]: 
   key: 
     - xmlizable: 
