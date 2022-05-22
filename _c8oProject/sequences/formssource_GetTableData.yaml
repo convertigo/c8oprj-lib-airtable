@@ -182,21 +182,20 @@ comment: |
               variableName: jDisplayName
         ↓BuildHTMLDisplay [steps.SimpleStep-1653053579169]: 
           expression: |
-            'jDisplay = null
-            jDiv  = "<div style=\"line-height: 20px\">"
-            
-            if (mappings[jDisplayName] != undefined) {
-            	if (mappings[jDisplayName] != null) {
-            		if (jField.constructor.name == "Array") {
-            			data = [];
+            'jDisplay = null											// Init to null so that if nothing matches col will not be displayed
+            jDiv  = "<div style=\"line-height: 20px\">"				// Basic Div definition 
+            if (mappings[jDisplayName] != undefined) {				// Is there a mpping for this Column ?
+            	if (mappings[jDisplayName] != null) {				// Is the mapping defined ?
+            		if (jField.constructor.name == "Array") {		// Handle Multi valuated Columns
+            			data = [];									// build an Array of data items
             			jField.forEach((item) => {
             				log.warn("item : " + JSON.stringify(item))
-            				data.push(eval(''item''+ mappings[jDisplayName]))
-            				bIsPhoto = item.type != undefined
+            				data.push(eval(''item''+ mappings[jDisplayName]))  // Use the mapping to get the correct field
+            				bIsPhoto = item.type != undefined				 // We assume that a type attribute defines a photo
             			})
             			log.warn("Data Array: " + JSON.stringify(data))
             			
-            			jDisplay = jDiv + "<b>"
+            			jDisplay = jDiv + "<b>"						// Display each item as a diffrent line
             			data.forEach(item => {
             				if (bIsPhoto) {
             					jDisplay += ("<img height=\"50px\" src=\""+item + "\"><br>")
@@ -206,20 +205,16 @@ comment: |
             			})
             			jDisplay += "</b></div>"
             
-            		} else {
-            			data = eval(''jField''+ mappings[jDisplayName]);
+            		} else {												// This not a multi-valuated
+            			data = eval(''jField''+ mappings[jDisplayName]);		// Use the mapping to get the correct field
             			jDisplay = jDiv + "<b>" + data + "</b></div>" 
             		}
             	}
-            	else {
+            	else {														// This a standard non multi-valuated not mapped col
             		data = jField
             		jDisplay = jDiv + "<b>" + data + "</b></div>" 
             	}
-            }
-            
-            
-            
-            '
+            }'
         ↓jIf [steps.IfStep-1653125054176]: 
           condition: jDisplay != null
           ↓Object [steps.JsonObjectStep-1653052058885]: 
