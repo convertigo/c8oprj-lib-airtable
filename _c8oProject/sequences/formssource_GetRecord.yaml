@@ -1,0 +1,309 @@
+comment: |
+  '{
+          "en": {
+              "displayName": "GetRecord",
+              "comment": "Get A record from an Airtable database"
+          },
+          "fr": {
+              "displayName": "GetRecord",
+              "comment": "Récupére un enregistrement d''une base de donnée Airtable"
+          },
+  	 "types":["select", "grid"]
+  }
+  '
+↓Input_variables [steps.InputVariablesStep-1653213929655]: 
+↓DefineGetRecordMappings [steps.SimpleStep-1653213929658]: 
+  expression: |
+    '//
+    if (forms_mappings) {
+    	mappings = JSON.parse(forms_mappings)
+    } else {
+    	mappings = {
+    		"Project Lead":".name",
+    		"Project Team":".name",
+    		"Complete":"",
+    		"Category":"",
+    		"Client":"",
+    		"Project Photos":".url",
+    		"Kickoff date":""
+    	}
+    }
+    '
+↓Call_Transaction [steps.TransactionStep-1653213929661]: 
+  sourceTransaction: lib_Airtable.Airtable.GetRecord
+  ↓database [variables.StepVariable-1653213929664]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1653213929655
+          - java.lang.String: 
+            - ↑value: ./forms_database/text()
+  ↓table [variables.StepVariable-1653213929667]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1653213929655
+          - java.lang.String: 
+            - ↑value: ./forms_table/text()
+  ↓api_key [variables.StepVariable-1653213929670]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1653213929655
+          - java.lang.String: 
+            - ↑value: ./forms_api_key/text()
+  ↓id [variables.StepVariable-1653213959809]: 
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1653213929655
+          - java.lang.String: 
+            - ↑value: ./forms_id/text()
+↓Array [steps.JsonArrayStep-1653231485399]: 
+  key: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+      - SmartType: 
+        - ↑mode: PLAIN
+        - →→: data
+  ↓Object [steps.JsonObjectStep-1653231593375]: 
+    ↓Field [steps.JsonFieldStep-1653213929688]: 
+      key: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+          - SmartType: 
+            - ↑mode: PLAIN
+            - →→: __rowValue
+      value: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+          - SmartType: 
+            - ↑mode: SOURCE
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1653213929661
+              - java.lang.String: 
+                - ↑value: ./document/object/id/text()
+    ↓Iterator1 [steps.IteratorStep-1653213929691]: 
+      sourceDefinition: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: 1653213929661
+            - java.lang.String: 
+              - ↑value: ./document/object/fields/*
+      ↓IfExistThenElse [steps.IfExistThenElseStep-1653213929694]: 
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1653213929691
+              - java.lang.String: 
+                - ↑value: ./text()
+        ↓jThen [steps.ThenStep-1653213929697]: 
+          ↓jSimpleSource [steps.SimpleSourceStep-1653213929700]: 
+            sourceDefinition: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                - com.twinsoft.convertigo.beans.common.XMLVector: 
+                  - java.lang.String: 
+                    - ↑value: 1653213929691
+                  - java.lang.String: 
+                    - ↑value: ./text()
+            variableName: jField
+        ↓jElse [steps.ElseStep-1653213929703]: 
+          ↓JsonSource [steps.JsonSourceStep-1653213929706]: 
+            sourceDefinition: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                - com.twinsoft.convertigo.beans.common.XMLVector: 
+                  - java.lang.String: 
+                    - ↑value: 1653213929691
+                  - java.lang.String: 
+                    - ↑value: .
+            variableName: jField
+      ↓IfExistThenElse1 [steps.IfExistThenElseStep-1653213929709]: 
+        sourceDefinition: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+            - com.twinsoft.convertigo.beans.common.XMLVector: 
+              - java.lang.String: 
+                - ↑value: 1653213929691
+              - java.lang.String: 
+                - ↑value: ./@originalKeyName
+        ↓jThen [steps.ThenStep-1653213929712]: 
+          ↓jSimpleSource [steps.SimpleSourceStep-1653213929715]: 
+            sourceDefinition: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                - com.twinsoft.convertigo.beans.common.XMLVector: 
+                  - java.lang.String: 
+                    - ↑value: 1653213929691
+                  - java.lang.String: 
+                    - ↑value: ./@originalKeyName
+            variableName: jDisplayName
+        ↓jElse [steps.ElseStep-1653213929718]: 
+          ↓jSimpleSource [steps.SimpleSourceStep-1653213929721]: 
+            sourceDefinition: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+                - com.twinsoft.convertigo.beans.common.XMLVector: 
+                  - java.lang.String: 
+                    - ↑value: 1653213929691
+                  - java.lang.String: 
+                    - ↑value: name(.)
+            variableName: jDisplayName
+      ↓BuildHTMLDisplay [steps.SimpleStep-1653213929724]: 
+        expression: |
+          'jDisplay = null											// Init to null so that if nothing matches col will not be displayed
+          jDiv  = "<div style=\"line-height: 20px\">"				// Basic Div definition 
+          if (mappings[jDisplayName] != undefined) {				// Is there a mpping for this Column ?
+          	if (mappings[jDisplayName] != null) {				// Is the mapping defined ?
+          		if (jField.constructor.name == "Array") {		// Handle Multi valuated Columns
+          			data = [];									// build an Array of data items
+          			jField.forEach((item) => {
+          				log.warn("item : " + JSON.stringify(item))
+          				data.push(eval(''item''+ mappings[jDisplayName]))  // Use the mapping to get the correct field
+          				bIsPhoto = item.type != undefined				 // We assume that a type attribute defines a photo
+          			})
+          			log.warn("Data Array: " + JSON.stringify(data))
+          			
+          			jDisplay = jDiv + "<b>"						// Display each item as a diffrent line
+          			data.forEach(item => {
+          				if (bIsPhoto) {
+          					jDisplay += ("<img height=\"50px\" src=\""+item + "\"><br>")
+          				} else {
+          					jDisplay += (item + "<br>")
+          				}
+          			})
+          			jDisplay += "</b></div>"
+          
+          		} else {												// This not a multi-valuated
+          			data = eval(''jField''+ mappings[jDisplayName]);		// Use the mapping to get the correct field
+          			jDisplay = jDiv + "<b>" + data + "</b></div>" 
+          		}
+          	}
+          	else {														// This a standard non multi-valuated not mapped col
+          		data = jField
+          		jDisplay = jDiv + "<b>" + data + "</b></div>" 
+          	}
+          }'
+      ↓jIf [steps.IfStep-1653213929727]: 
+        condition: jDisplay != null
+        ↓Object [steps.JsonObjectStep-1653213929730]: 
+          key: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+              - SmartType: 
+                - ↑mode: SOURCE
+                - com.twinsoft.convertigo.beans.common.XMLVector: 
+                  - java.lang.String: 
+                    - ↑value: 1653213929691
+                  - java.lang.String: 
+                    - ↑value: name(.)
+          ↓Field [steps.JsonFieldStep-1653213929733]: 
+            key: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: PLAIN
+                  - →→: type
+            value: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: PLAIN
+                  - →→: html
+          ↓Field1 [steps.JsonFieldStep-1653213929736]: 
+            key: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: PLAIN
+                  - →→: value
+            value: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: JS
+                  - →→: data
+          ↓Field2 [steps.JsonFieldStep-1653213929739]: 
+            key: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: PLAIN
+                  - →→: displayValue
+            value: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: JS
+                  - →→: jDisplay
+          ↓Field3 [steps.JsonFieldStep-1653213929742]: 
+            key: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: PLAIN
+                  - →→: displayName
+            value: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                - SmartType: 
+                  - ↑mode: JS
+                  - →→: jDisplayName
+↓forms_api_key [variables.RequestableVariable-1653213929745]: 
+  comment: |
+    '{
+        "en": {
+            "displayName": "<p>API Key</p>",
+            "comment"    : "The Airtable API Key can be found on the <a target=''_blank'' href=''https://airtable.com/api''>https://airtable.com/api</a> page. From there, click on the ''Show API Key'' on the upperleft of the page. Then scroll down to some text on the right side displaying : <br ><br >''Bearer XXXXXX''<br><br>This is the key. Copy the string next to Bearer and paste it in this field."
+        }
+    }'
+↓forms_database [variables.RequestableVariable-1653213929748]: 
+  comment: |
+    '{
+        "en": {
+            "displayName": "<p>The database ID</p>",
+            "comment"    : "The Airtable Database id can be found on the <a target=''_blank'' href=''https://airtable.com/api''>https://airtable.com/api</a> page. From there, click on the database you want, a page will appear with some information like :<br />''The database ID is : XXXXX</br>Copy the ID and paste it in this field "
+        }
+    }'
+  value: 
+↓forms_table [variables.RequestableVariable-1653213929751]: 
+  comment: |
+    '{
+        "en": {
+            "displayName": "<p>Table</p>",
+            "comment"    : "The Airtable Database table name you would like to display. This is the same name as the Table name in the Airtable user interface."
+        }
+    }'
+↓forms_id [variables.RequestableVariable-1653213983058]: 
+  comment: |
+    '{
+        "en": {
+            "displayName": "<p>ID</p>",
+            "comment"    : "The record ID you want to retreive. This value may come from a previous GetTableData listing records in the database"
+        }
+    }'
+↓forms_mappings [variables.RequestableVariable-1653217175878]: 
+↓TestGetRecord [core.TestCase]: 
+  ↓forms_api_key [variables.TestCaseVariable-1653213929764]: 
+    value: keyu6xolOr1ZRsPDK
+  ↓forms_database [variables.TestCaseVariable-1653213929767]: 
+    value: appqqkBuzuDx7wX3K
+  ↓forms_table [variables.TestCaseVariable-1653213929770]: 
+    value: Design Projects
+  ↓forms_id [variables.TestCaseVariable-1653214827577]: 
+    value: rec0KBNPsJRZoFhzJ
+  ↓forms_mappings [variables.TestCaseVariable-1653213929779]: 

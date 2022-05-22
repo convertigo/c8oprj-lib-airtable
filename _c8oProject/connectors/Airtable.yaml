@@ -39,6 +39,48 @@ trustAllServerCertificates: false
   ↓database [variables.RequestableHttpVariable-1653035675448]: 
   ↓table [variables.RequestableHttpVariable-1653035675450]: 
   ↓api_key [variables.RequestableHttpVariable-1653035690832]: 
+↓GetRecord [transactions.JsonHttpTransaction]: 
+  subDir: '{database}/{table}/{id}'
+  handlers: 
+    →: |
+      '// Handles the transaction start event.
+      
+      function onTransactionStarted() {
+      
+          // TODO: add your code here
+      
+      
+      
+          // TODO: customize the returned value (if you omit returned value, the 
+      
+          // algorithm will continue its process).
+      
+          // Possible values are:
+      
+          //    cancel - means the algorithm cancels the transaction core process.
+      
+      
+      
+          // return "cancel";
+      
+          context.connector.sUrl = context.connector.sUrl.replace(''+'', ''%20'');
+      
+      }
+      
+      '
+  ↓TestGetRecord [core.TestCase]: 
+    ↓database [variables.TestCaseVariable-1653213805373]: 
+      value: appqqkBuzuDx7wX3K
+    ↓table [variables.TestCaseVariable-1653213805376]: 
+      value: Design Projects
+    ↓api_key [variables.TestCaseVariable-1653213805379]: 
+      value: keyu6xolOr1ZRsPDK
+    ↓id [variables.TestCaseVariable-1653213862728]: 
+      value: rec0KBNPsJRZoFhzJ
+  ↓database [variables.RequestableHttpVariable-1653213805388]: 
+  ↓table [variables.RequestableHttpVariable-1653213805391]: 
+  ↓api_key [variables.RequestableHttpVariable-1653213805394]: 
+  ↓id [variables.RequestableHttpVariable-1653213853665]: 
 ↓ListRecords [transactions.JsonHttpTransaction]: 
   subDir: '{database}/{table}'
   handlers: 

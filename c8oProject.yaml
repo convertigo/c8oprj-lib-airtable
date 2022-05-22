@@ -5,6 +5,7 @@
   version: 1.0
   ↓Airtable [connectors.HttpConnector]: 🗏 connectors/Airtable.yaml
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
+  ↓formssource_GetRecord [sequences.GenericSequence]: 🗏 sequences/formssource_GetRecord.yaml
   ↓formssource_GetTableData [sequences.GenericSequence]: 🗏 sequences/formssource_GetTableData.yaml
   ↓NgxBuilderTemplate [references.ProjectSchemaReference]: 
     comment: ngx builder template
