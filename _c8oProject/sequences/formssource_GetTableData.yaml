@@ -14,14 +14,17 @@ comment: |
 ↓Input_variables [steps.InputVariablesStep-1653069353060]: 
 ↓DefineMappings [steps.SimpleStep-1653055162667]: 
   expression: |
-    'mappings = {
-    	"Project Lead": {
-    		"Project Lead ID": {
-    			path: ".id"
-    		},
-    		"Project Lead Name": {
-    			path: ".name"
-    		}
+    'if (forms_mappings != undefined) {
+    	mappings = JSON.parse(forms_mappings)
+    } else {
+    	mappings = {
+    		"Project Lead":".name",
+    		"Project Team":".name",
+    		"Complete":"",
+    		"Category":"",
+    		"Client":"",
+    		"Project Photos":".url",
+    		"Kickoff date":""
     	}
     }
     '
@@ -179,73 +182,48 @@ comment: |
               variableName: jDisplayName
         ↓BuildHTMLDisplay [steps.SimpleStep-1653053579169]: 
           expression: |
-            'if (mappings[jDisplayName]) {
-            	data = "";
-            	Object.keys(mappings[jDisplayName]).forEach(key => {
-            		data += key + ": ";
-            		data += eval("jField" + mappings[jDisplayName][key].path)
-            		data += "<br />"
-            	})
-            } else {
-            	if (typeof  jField != "string") { 
-            		data = "";
-            		Object.keys(jField).forEach(key => {
-            			data += key + ": "
-            			data += jField[key]
-            			data += "<br />"
-            		})
-            	} else if (typeof  jField == "array") { 
-            		data = "";
-            		Object.keys(jField).forEach(key => {
-            			data += key + ": "
-            			data += jField[key]
-            			data += "<br />"
-            		})
-            	} else {
-            		data = jField;
+            'jDisplay = null
+            jDiv  = "<div style=\"line-height: 20px\">"
+            
+            if (mappings[jDisplayName] != undefined) {
+            	if (mappings[jDisplayName] != null) {
+            		if (jField.constructor.name == "Array") {
+            			data = [];
+            			jField.forEach((item) => {
+            				log.warn("item : " + JSON.stringify(item))
+            				data.push(eval(''item''+ mappings[jDisplayName]))
+            				bIsPhoto = item.type != undefined
+            			})
+            			log.warn("Data Array: " + JSON.stringify(data))
+            			
+            			jDisplay = jDiv + "<b>"
+            			data.forEach(item => {
+            				if (bIsPhoto) {
+            					jDisplay += ("<img height=\"50px\" src=\""+item + "\"><br>")
+            				} else {
+            					jDisplay += (item + "<br>")
+            				}
+            			})
+            			jDisplay += "</b></div>"
+            
+            		} else {
+            			data = eval(''jField''+ mappings[jDisplayName]);
+            			jDisplay = jDiv + "<b>" + data + "</b></div>" 
+            		}
+            	}
+            	else {
+            		data = jField
+            		jDisplay = jDiv + "<b>" + data + "</b></div>" 
             	}
             }
             
-            jDisplay = 
-            
-            "<div>" +
-            	data +
-            "</div>"
             
             
             '
-        ↓Object [steps.JsonObjectStep-1653052058885]: 
-          key: 
-            - xmlizable: 
-              - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-              - SmartType: 
-                - ↑mode: SOURCE
-                - com.twinsoft.convertigo.beans.common.XMLVector: 
-                  - java.lang.String: 
-                    - ↑value: 1653040703368
-                  - java.lang.String: 
-                    - ↑value: name(.)
-          ↓Field [steps.JsonFieldStep-1653052058888]: 
+        ↓jIf [steps.IfStep-1653125054176]: 
+          condition: jDisplay != null
+          ↓Object [steps.JsonObjectStep-1653052058885]: 
             key: 
-              - xmlizable: 
-                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                - SmartType: 
-                  - ↑mode: PLAIN
-                  - →→: type
-            value: 
-              - xmlizable: 
-                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                - SmartType: 
-                  - ↑mode: PLAIN
-                  - →→: html
-          ↓Field1 [steps.JsonFieldStep-1653052058891]: 
-            key: 
-              - xmlizable: 
-                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                - SmartType: 
-                  - ↑mode: PLAIN
-                  - →→: value
-            value: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
                 - SmartType: 
@@ -254,33 +232,59 @@ comment: |
                     - java.lang.String: 
                       - ↑value: 1653040703368
                     - java.lang.String: 
-                      - ↑value: ./id/text()
-          ↓Field2 [steps.JsonFieldStep-1653052058894]: 
-            key: 
-              - xmlizable: 
-                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                - SmartType: 
-                  - ↑mode: PLAIN
-                  - →→: displayValue
-            value: 
-              - xmlizable: 
-                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                - SmartType: 
-                  - ↑mode: JS
-                  - →→: jDisplay
-          ↓Field3 [steps.JsonFieldStep-1653057206777]: 
-            key: 
-              - xmlizable: 
-                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                - SmartType: 
-                  - ↑mode: PLAIN
-                  - →→: displayName
-            value: 
-              - xmlizable: 
-                - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
-                - SmartType: 
-                  - ↑mode: JS
-                  - →→: jDisplayName
+                      - ↑value: name(.)
+            ↓Field [steps.JsonFieldStep-1653052058888]: 
+              key: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                  - SmartType: 
+                    - ↑mode: PLAIN
+                    - →→: type
+              value: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                  - SmartType: 
+                    - ↑mode: PLAIN
+                    - →→: html
+            ↓Field1 [steps.JsonFieldStep-1653052058891]: 
+              key: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                  - SmartType: 
+                    - ↑mode: PLAIN
+                    - →→: value
+              value: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                  - SmartType: 
+                    - ↑mode: JS
+                    - →→: data
+            ↓Field2 [steps.JsonFieldStep-1653052058894]: 
+              key: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                  - SmartType: 
+                    - ↑mode: PLAIN
+                    - →→: displayValue
+              value: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                  - SmartType: 
+                    - ↑mode: JS
+                    - →→: jDisplay
+            ↓Field3 [steps.JsonFieldStep-1653057206777]: 
+              key: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                  - SmartType: 
+                    - ↑mode: PLAIN
+                    - →→: displayName
+              value: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.steps.SmartType
+                  - SmartType: 
+                    - ↑mode: JS
+                    - →→: jDisplayName
 ↓forms_api_key [variables.RequestableVariable-1653040678021]: 
   comment: |
     '{

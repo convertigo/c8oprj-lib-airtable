@@ -64,7 +64,7 @@ trustAllServerCertificates: false
     ↓api_key [variables.TestCaseVariable-1653036927090]: 
       value: keyu6xolOr1ZRsPDK
     ↓maxRecords [variables.TestCaseVariable-1653037036749]: 
-      value: 3
+      value: 20
     ↓view [variables.TestCaseVariable-1653037036751]: 
       value: Main View
   ↓database [variables.RequestableHttpVariable-1653036927093]: 
