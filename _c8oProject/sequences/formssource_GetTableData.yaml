@@ -322,6 +322,13 @@ comment: |
         }
     }'
 ↓forms_mappings [variables.RequestableVariable-1653054009777]: 
+  comment: |
+    '{
+        "en": {
+            "displayName": "<p>Column Mappings</p>",
+            "comment"    : "Describe here how you you would like the Airtable columns to be mapped to the Grid. This can be done using the following syntax (each mapping separated by a '','') : <br><code>{\n\t\"the name of the column you want to be inlcuded\":\"\",\n\t\"the name of an other column included\":\"\" \n}</code><br><br>Sometimes the data in an Airtable columns is held in a sub field. In this case, you can explicitly map this subfield by using this syntax : <br><code>{\n\t\"the name of the column you want to be included\":\".the_sub_field_name\" \n}</code><br><br>You can also map Airtable columns containing photos using this syntax: <br><code>{\n\t\"the name of the photo column you want to be included\":\".url\" \n}</code><br><br>"
+        }
+    }'
 ↓TestDesignProjects [core.TestCase]: 
   ↓forms_api_key [variables.TestCaseVariable-1653040928803]: 
     value: keyu6xolOr1ZRsPDK
