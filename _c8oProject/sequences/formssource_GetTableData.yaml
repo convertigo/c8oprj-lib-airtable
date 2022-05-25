@@ -227,7 +227,7 @@ comment: |
                     - java.lang.String: 
                       - ↑value: 1653040703368
                     - java.lang.String: 
-                      - ↑value: name(.)
+                      - ↑value: concat('f_', name(.))
             ↓Field [steps.JsonFieldStep-1653052058888]: 
               key: 
                 - xmlizable: 
