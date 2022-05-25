@@ -307,7 +307,11 @@ comment: |
   value: 
 ↓TestGetRecord [core.TestCase]: 
   ↓forms_api_key [variables.TestCaseVariable-1653213929764]: 
-    value: keyu6xolOr1ZRsPDK
+    value: 
+      - ↑ciphered: true
+      - ↑traceable: false
+      - →→: x1946d415261fd7c55936e43a1ea231dfce73cf00711d34a64e3dbab8fd191dfe
+    visibility: '-1'
   ↓forms_database [variables.TestCaseVariable-1653213929767]: 
     value: appqqkBuzuDx7wX3K
   ↓forms_table [variables.TestCaseVariable-1653213929770]: 

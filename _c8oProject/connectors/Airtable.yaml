@@ -74,7 +74,11 @@ trustAllServerCertificates: false
     ↓table [variables.TestCaseVariable-1653213805376]: 
       value: Design Projects
     ↓api_key [variables.TestCaseVariable-1653213805379]: 
-      value: keyu6xolOr1ZRsPDK
+      value: 
+        - ↑ciphered: true
+        - ↑traceable: false
+        - →→: x1946d415261fd7c55936e43a1ea231dfce73cf00711d34a64e3dbab8fd191dfe
+      visibility: '-1'
     ↓id [variables.TestCaseVariable-1653213862728]: 
       value: rec0KBNPsJRZoFhzJ
   ↓database [variables.RequestableHttpVariable-1653213805388]: 
